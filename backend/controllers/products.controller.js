@@ -10,9 +10,13 @@ exports.newProduct = async (req, res)=>{
     })
 }
 
-exports.getProducts = (req, res) =>{
+// todos los productos
+exports.getProducts = async (req, res) =>{
+    const product = await Product.find();
+
     res.status(200).json({
         success: true,
-        message: 'Ruta para mostrar los productos en la la DB'
+        count: product.length,
+        product
     })
 }
